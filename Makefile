@@ -23,7 +23,6 @@ AWS_ENV = AWS_REQUEST_CHECKSUM_CALCULATION=when_required
 help:
 	@echo "build  - build $(IMAGE):$(TAG) for $(PLATFORM) into the local docker images"
 	@echo "push   - build and push $(IMAGE):$(TAG) for $(PLATFORM)"
-	@echo "run    - run one request locally, with ./app standing in for the mount"
 	@echo "shell  - shell in the image, ./app mounted"
 	@echo "sync   - upload ./app to s3://$(NETWORK_VOLUME)/$(REMOTE_DIR) ($(DATACENTER))"
 	@echo "ls     - list what is on the volume now"
@@ -36,16 +35,6 @@ build:
 
 push:
 	docker buildx build --platform $(PLATFORM) -t $(IMAGE):$(TAG) --push .
-
-# ./app is bind-mounted where a serverless worker sees the network volume, so
-# this runs the same code path as the endpoint does.
-run:
-	docker run --rm --platform $(PLATFORM) \
-		-v $(PWD)/app:/runpod-volume/app:ro \
-		-v $(PWD)/test_input.json:/test_input.json:ro \
-		-e RUNPOD_HOT_RELOAD=1 \
-		$(IMAGE):$(TAG) \
-		python /opt/runpod/launcher.py --test_input "$$(cat test_input.json)"
 
 shell:
 	docker run --rm -it --platform $(PLATFORM) \
