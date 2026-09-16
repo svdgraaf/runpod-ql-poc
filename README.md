@@ -16,9 +16,9 @@ The default image is called `runpod-ql-poc`, you can override with `IMAGE`.
 
 # setup
 - Create a network volume in runpod
-  o create S3 credentials, and export those:
-    o `export AWS_ACCESS_KEY_ID=user_... AWS_SECRET_ACCESS_KEY=rps_...`
-  o `DATACENTER=xyz NETWORK_VOLUME=abc make sync` will sync your files to your volume in the right spot
+  - create S3 credentials, and export those:
+    - `export AWS_ACCESS_KEY_ID=user_... AWS_SECRET_ACCESS_KEY=rps_...`
+  - `DATACENTER=xyz NETWORK_VOLUME=abc make sync` will sync your files to your volume in the right spot
 - Create an SLS worker (regular pod will also work)
 - Set worker size to 1 (but it doesn't really matter tbh 🤷‍♂️)
 - Set the image you build and uploaded to your dockerhub repo (or use `svdgraafrunpod/runpod-ql-poc:dev`)
