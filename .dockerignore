@@ -1,0 +1,9 @@
+# User code must never enter the image
+app/
+
+# Don't import all of these
+test_input.json
+Makefile
+README.md
+.git/
+**/__pycache__/
