@@ -14,6 +14,7 @@ import os
 import sys
 import traceback
 
+# this will be installed by the Dockerfile
 import runpod
 
 APP_DIR = os.path.abspath(os.environ.get("RUNPOD_APP_DIR", "/runpod-volume/app"))
