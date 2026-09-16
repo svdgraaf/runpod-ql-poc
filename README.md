@@ -33,3 +33,33 @@ RUNPOD_HOT_RELOAD=1
 - Profit!
 
 You should now be able to send a request to your pod and it will process whatever you had in the `app` directory. Make local changes, run `make sync` again
+
+# testing
+```
+runpodctl serverless run [endpoint-id] --input-file .test_input.json
+```
+
+For example:
+```
+runpodctl serverless run fzwndnr69imy1v --input-file test_input.json
+waiting for job dc5e779d-967b-4b3e-ab03-b3bf798a64b7-e1: IN_QUEUE
+job dc5e779d-967b-4b3e-ab03-b3bf798a64b7-e1: COMPLETED after 4s
+{
+  "delayTime": 3080,
+  "executionTime": 141,
+  "id": "dc5e779d-967b-4b3e-ab03-b3bf798a64b7-e1",
+  "output": {
+    "event": {
+      "delayTime": 3080,
+      "id": "dc5e779d-967b-4b3e-ab03-b3bf798a64b7-e1",
+      "input": {
+        "name": "sander"
+      },
+      "status": "IN_PROGRESS"
+    },
+    "message": "Hello hello sander!",
+    "source": "/runpod-volume/app/handler.py"
+  },
+  "status": "COMPLETED",
+  "workerId": "nys58hmkoes2g0"
+}
