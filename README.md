@@ -1,7 +1,9 @@
 # runpod-ql-poc
 
 # building
-Create a docker image first (this is build to run on a arm mac)
+You can use the public `svdgraafrunpod/runpod-ql-poc:dev` image, or build your own:
+
+Create a docker image (this is build to run on a arm mac)
 
 ```
 make build
@@ -19,7 +21,7 @@ The default image is called `runpod-ql-poc`, you can override with `IMAGE`.
   o `DATACENTER=xyz NETWORK_VOLUME=abc make sync` will sync your files to your volume in the right spot
 - Create an SLS worker (regular pod will also work)
 - Set worker size to 1 (but it doesn't really matter tbh 🤷‍♂️)
-- Set the image you build and uploaded to your dockerhub repo
+- Set the image you build and uploaded to your dockerhub repo (or use `svdgraafrunpod/runpod-ql-poc:dev`)
 - Set the environment variables
 ```
 RUNPOD_APP_DIR=/runpod-volume/app
